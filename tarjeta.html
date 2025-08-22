@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  
+<!--1 DIV DE FOTO-->
+<div><img src="/images/CATA-XV-06-1024x683.jpg" width="100%" alt=""></div>
+
+
+<!--2 DIV DE CONTADOR-->
+<div class="cajaclara">
+<p>MIS 15 CATA</p>
+
+<div id="contador" style="display:flex; justify-content:center; gap:15px; font-family:Arial, sans-serif; margin-top:50px;">
+  <div class="caja"><span id="dias">0</span><br><p>DIAS</p></div>
+  <div class="caja"><span id="horas">0</span><br><p>HORAS</p></div>
+  <div class="caja"><span id="minutos">0</span><br><p>MINUTOS</p></div>
+  <div class="caja"><span id="segundos">0</span><br><p>SEGUNDOS</p></div>
+</div>
+
+<script>
+  const fechaEvento = new Date("2025-11-08T21:00:00").getTime();
+
+  function actualizarContador() {
+    const ahora = new Date().getTime();
+    const distancia = fechaEvento - ahora;
+
+    if(distancia < 0){
+      document.getElementById("contador").innerHTML = "<div style='font-size:2em; color:#d63384;'>¡El evento ha comenzado!</div>";
+      clearInterval(intervalo);
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").innerText = dias;
+    document.getElementById("horas").innerText = horas;
+    document.getElementById("minutos").innerText = minutos;
+    document.getElementById("segundos").innerText = segundos;
+  }
+
+  const intervalo = setInterval(actualizarContador, 1000);
+  actualizarContador();
+</script>
+
+
+</div>
+<!--3 DIV DE FRASE-->
+
+<div class="cajafrase">
+<hr>
+<p class="letrasclaras">RECUERDA QUE LA VIDA ES UN VIAJE, NO UN DESTINO. DISFRUTA CADA MOMENTO.</p>
+<hr>
+</div>
+
+<!--4 DIV DE FOTOS-->
+
+
+
+<!--5 DIV DE CUANDO-->
+<div>
+<img src="" alt="">
+
+<p>¿Cuando?</p>
+
+<p>20 DE DICIEMBRE DE 2025</p>
+<p>21:00 HS</p>
+
+
+</div>
+
+<!--6 DIV DE DONDE-->
+<div class="cajaclara">
+<img src="" alt="">
+<p class="letrasoscuras">¿DONDE?</p>
+<p class="letrasoscuras">LE PONT EVENTOS</p>
+<button>COMO LLEGAR</button>
+</div>
+
+<!--7 DIV DE DRESS CODE-->
+<div class="cajaclara">
+<img src="" alt="">
+<p class="letrasoscuras">DRESS CODE</p>
+<p class="letrasoscuras">ELEGANTE</p>
+<hr>
+<p class="letrasoscuras">EL COLOR ROSA SE RESERVA PARA LA QUINCEAÑERA</p>
+</div>
+
+<!--8 DIV DE PREPARATE PARA UNA NOCHE INOLVIDABLE-->
+<div class="cajafrase">
+<p>PREPARATE PARA UNA NOCHE ¡INOLVIDABLE!</p>
+</div>
+<!--9 DIV DE formulario-->
+
+
+
+
+ <h2>Confirmación de Invitados 🎉</h2>
+
+  <form id="miForm" action="https://formsubmit.co/sarmientojanet81@gmail.com" method="POST">
+    <!-- 🔹 Redirección a página de gracias -->
+    <input type="hidden" name="_next" value="https://janesarmiento.github.io/tarjeta-15/gracias.html">
+    <input type="hidden" name="_captcha" value="false">
+
+    <label>Cantidad de personas:</label>
+    <select id="cantidad" name="cantidad" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    
+    <div id="contenedor"></div>
+
+    <button type="submit">Enviar Confirmación</button>
+  </form>
+
+  <script>
+    const cantidadSelect = document.getElementById("cantidad");
+    const contenedor = document.getElementById("contenedor");
+
+    function generarCampos(n) {
+      contenedor.innerHTML = ""; 
+      for (let i = 1; i <= n; i++) {
+        contenedor.innerHTML += `
+          <div class="persona">
+            <h3>Persona ${i}</h3>
+            <label>Nombre:</label>
+            <input type="text" name="nombre_${i}" required>
+            <label>DNI:</label>
+            <input type="text" name="dni_${i}" required>
+            <label>Comida especial:</label>
+            <input type="text" name="comida_${i}">
+          </div>
+        `;
+      }
+    }
+
+    generarCampos(cantidadSelect.value);
+
+    cantidadSelect.addEventListener("change", (e) => {
+      generarCampos(e.target.value);
+    });
+
+    // 🔹 Redirección segura después de enviar
+    const form = document.getElementById("miForm");
+    form.addEventListener("submit", function(e) {
+      setTimeout(() => {
+        window.location.href = "https://janesarmiento.github.io/tarjeta-15/gracias.html";
+      }, 500); // medio segundo de espera para que se envíen los datos
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--10 DIV DE TE ESPERO-->
+<div>
+
+  <p>TE ESPERO</p>
+</div>
+
+
+
+</body>
+</html>
